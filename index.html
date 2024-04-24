@@ -1,4 +1,226 @@
-body {
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            @media screen and (max-width: 600px) {
+                body {
+                    background: linear-gradient(#2E3B54, rgb(5, 5, 193));
+                    background-attachment: fixed;
+                    overflow: hidden;
+                }
+
+                .navigation {
+                    height: 30px;
+                    width: 730px;
+                    padding: 5px 0px;
+                    margin: 30px auto;
+
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    
+                    color: white;
+                    text-shadow: 0px 0px 8px black;
+                    font-size: 25px;
+                    font-weight: bold;
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                }
+
+                i { color: #ffff9c; font-size: 30px; }
+
+
+                .forTracker {
+                    height: 300px;
+                    width: 300px;
+                    border-radius: 50%;
+                    position: relative;
+                    overflow: hidden;
+                    z-index: 1;
+                    margin: 0px auto;
+                }
+
+                .plainCircle, .greenCircle {
+                    height: 300px;
+                    width: 300px;
+                    position: absolute;
+                    border-radius: 50%;
+                }
+
+                .plainCircle {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #446185;
+                }
+
+                .greenCircle {
+                    top: 250px;
+                    left: -40px;
+                    width: 400px;
+                    background: linear-gradient(green, lime);
+                    background-attachment: fixed;
+                    animation: wavy linear 5s infinite;
+                    box-shadow: 0px 0px 8px rgb(73, 237, 73);
+                }
+
+                @keyframes wavy{
+                    0%, 100% {border-radius: 60% / 70px;}
+                    20% {border-radius: 120px / 50%;}
+                    40% {border-radius: 70% / 230px;}
+                    60% {border-radius: 180px / 40%;}
+                    80% {border-radius: 30% / 30px;}
+                }
+
+                .stepCount {
+                    color: white;
+                    text-align: center;
+                    text-shadow: 0px 0px 8px black;
+                    font-size: 30px;
+                    font-weight: bold;
+                    font-family: sans-serif;
+                    z-index: 3;
+                }
+
+                .pause {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    margin: 30px auto;
+                }
+
+                #pause {
+                    font-size: 50px;
+                    text-shadow: 0px 0px 10px black;
+                }
+
+                .lowNav {
+                    width: 730px;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    margin: 0px auto;
+                }
+
+                .lowNav div {
+                    display: flex;
+                    flex-flow: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+
+                    color: white;
+                    font-family: monospace;
+                }
+
+                b {font-size: 30px; margin: 10px 0px;}
+                p {font-size: 20px;}
+
+
+                .addContainer, .historyDiv {
+                    height: 600px;
+                    width: 700px;
+                    margin: 0px auto;
+
+                    background: blue;
+                    position: relative;
+                    top: -660px;
+                    color: white;
+                    text-shadow: 0px 0px 7px black;
+                }
+
+                .addContainer {
+                    font-size: 40px;
+                    font-family: monospace;
+                    font-weight: bold;
+                    display: none;
+                    flex-flow: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    z-index: 2;
+                }
+
+                .addContainer input {
+                    width: 80%;
+                    border: 3px solid black;
+                    border-radius: 50px;
+                    padding: 5px 0px;
+                    text-align: center;
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: red;
+                }
+
+                .addContainer button {
+                    font-size: 25px;
+                    font-weight: bold;
+                    background: white;
+                    border: 3px solid black;
+                    padding: 8px 10px;
+                }
+
+                .historyDiv {
+                    z-index: 3;
+                    display: none;
+                    flex-flow: column;
+                    justify-content: flex-start;
+
+                    font-family: monospace;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                }
+
+                .historyData div {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    padding: 1px 0px;
+
+                    font-size: 28px;
+                    color: #ffff9c;
+                }
+
+                .column {
+                    color: white;
+                    font-size: 38px;
+
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    padding: 10px 0px;
+                    border-bottom: 3px solid white;
+                }
+
+                .exit {
+                    content: 'x';
+                    position: absolute;
+                    top: 0px;
+                    left: 0px;
+                    z-index: 4;
+                    height: 30px;
+                    width: 30px;
+                    padding: 5px;
+                    color: white;
+                    text-shadow: 0px 0px 5px;
+                    background: red;
+                    font-size: 30px;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+
+
+
+            body {
                 background: linear-gradient(#2E3B54, rgb(5, 5, 193));
                 background-attachment: fixed;
                 overflow: hidden;
@@ -206,3 +428,114 @@ body {
                 justify-content: center;
                 align-items: center;
             }
+        </style>
+    </head>
+<body>
+
+    <div class="navigation">
+        <i class="fa-solid fa-clock-rotate-left" onclick="viewHistory()"></i>
+        <div class="title" onclick="viewAddContainer()"> Step Counter </div>
+        <i class="fa-regular fa-lightbulb"></i>
+    </div>
+
+
+    <div class="forTracker">
+        <div class="plainCircle">
+            <div class="stepCount"> Total Steps: <br><br> 75 </div>
+        </div>
+        <div class="greenCircle"></div>
+    </div>
+
+    <div class="pause">
+        <i class="fa-solid fa-play" id="pause"></i>
+    </div>
+    
+    <div class="lowNav">
+        <div>
+            <i class="fa-solid fa-location-dot" style="color: yellow;"></i>
+            <b> 0.03 </b>
+            <p> Mile </p>
+        </div>
+
+        <div>
+            <i class="fa-solid fa-fire-flame-curved" style="color: orange;"></i>
+            <b> 6.6 </b>
+            <p> Kcal </p>
+        </div>
+
+        <div>
+            <i class="fa-regular fa-clock" style="color: cyan;"></i>
+            <b> 0h 1m </b>
+            <p> Walking Time </p>
+        </div>
+    </div>
+
+
+
+    <div class="addContainer" id="addContainer">
+        <label> Date </label> <br>
+        <input type="text" id="date"> <br><br>
+
+        <label> Steps </label> <br>
+        <input type="text" id="steps"> <br><br>
+
+        <button onclick="toSubmit()"> Submit </button>
+    </div>
+
+
+
+    <div class="historyDiv">
+        <div class="column">
+            <div class="exit">x</div>
+            <div> Date </div>
+            <div> Steps </div>
+        </div>
+
+
+        <div class="historyData">
+
+        </div>
+    </div>
+
+<script>
+    let addContainer = document.getElementById("addContainer");
+    let date = document.getElementById("date");
+    let steps = document.getElementById("steps");
+
+    let historyData = document.querySelector(".historyData");
+
+    function viewAddContainer() {
+        addContainer.style.display = "flex";
+    }
+    function toSubmit() {
+        if (date.value != "" || steps.value != "") {
+            let divDate = document.createElement("div");
+            divDate.innerHTML = date.value;
+
+            let divSteps = document.createElement("div");
+            divSteps.innerHTML = steps.value;
+
+            let allData = document.createElement("div");
+            allData.append(divDate, divSteps);
+
+            historyData.append(allData);
+        }
+
+        addContainer.style.display = "none";
+    }
+
+
+
+    let historyDiv = document.querySelector(".historyDiv");
+    let exit = document.querySelector(".exit");
+
+    function viewHistory() {
+        historyDiv.style.display = "flex";
+    }
+
+    exit.onclick = function() {
+        historyDiv.style.display = "none";
+    }
+</script>
+</body>
+</html>
